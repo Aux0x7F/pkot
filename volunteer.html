@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            min-height: 200vh;
+            margin: 0;
+        }
+        .cover-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            margin: 0;
+        }
+        .content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 600px;
+            word-wrap: break-word;
+            flex: 1;
+            margin: 0 auto;
+            min-height: 100%;
+        }
+        .bottom-center {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+            background: #fff; /* optional backdrop */
+        }
+        .signal-btn {
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            background-color: #3a76f0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .signal-btn:hover {
+            background-color: #295bb5;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="theme-assets/images/pkot_cover.png" alt="Cover Banner" style="width:100%;max-height:300px;object-fit:cover;">
+    </div>
+    <div class="content" id="volunteer-content">
+        <!-- Volunteer.md will be rendered here -->
+    </div>
+    <div class="bottom-center">
+        <a href="https://signal.group/#CjQKIH1zmW_Qf0gtVvIa_yzhqt55d5FqosjZ4vFPGKMkY8MfEhDWzw6L6NbFQPP9s_R8sCrM" class="signal-btn">Join our Signal</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('volunteer.md')
+            .then(response => response.text())
+            .then(md => {
+                document.getElementById('volunteer-content').innerHTML = marked.parse(md);
+            });
+    </script>
+</body>
+</html>
